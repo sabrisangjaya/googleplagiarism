@@ -1,7 +1,10 @@
+<!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Google Plagiarism</title>
+        <link rel="SHORTCUT ICON" href="img/favicon.ico" />
+        <link rel="icon" href="img/favicon.ico" type="image/ico"/>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery.min.js" type="text/javascript"></script>
     </head>
@@ -30,6 +33,14 @@
         ?>
         <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <img src="img/googlelogo.png" alt="google">
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
@@ -38,7 +49,6 @@
                                     <label for="exampleFormControlTextarea1">Masukan Kalimat</label>
                                     <textarea  class="form-control" name="query" id="" cols="30" rows="10"></textarea>
                                 </div>
-                                
                                 <button type="submit" name="kirim" class="btn btn-primary">Periksa</button>
                             </form>
                         </div>
@@ -47,19 +57,19 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
+                            <p>Hasil :</p>
                             <?php
                             if(isset($_POST['kirim'])){
                             echo "Pencarian:<br/><div id='hasil'>".$_POST['query']."</div><br/>";
                             cUrl($_POST['query']); // Request http ke alamat pencarian google
                             ?>
+                            <script>
+                            var z = document.getElementsByClassName("r"); //mengambil hasil judul google
+                            var y=document.getElementsByTagName("cite"); // mengambil hasil situs goole
+                            var x = document.getElementsByClassName("st"); //mengambil hasil isi google
                             
-                                <script>
-                                var z = document.getElementsByClassName("r"); //mengambil hasil judul google
-                                var y=document.getElementsByTagName("cite"); // mengambil hasil situs goole
-                                var x = document.getElementsByClassName("st"); //mengambil hasil isi google
-                                
-                                for (var i = 0; i < 3; i++) {//looping  untuk mendapatkan 3 hasil situs teratas pencarian google
-                                document.write("<div class='card'><div class='card-body'>");
+                            for (var i = 0; i < 3; i++) {//looping  untuk mendapatkan 3 hasil situs teratas pencarian google
+                            document.write("<div class='card'><div class='card-body'>");
                                 document.write("<br/>"+z[i].innerHTML);
                                 document.write("<br/>"+y[i].innerHTML);
                                 $(".st").find( "b" ).css( "color", "red" ); //merubah yang dibold google menjadi merah
@@ -99,10 +109,9 @@
                                 kata yang unik dibandingkan dengan kata inputan
                                 */
                                 document.write("Probabilitas : "+probab+"<br/>");
-                                document.write("</div></div><br/>");
-                                }
-                                </script>
-                            
+                            document.write("</div></div><br/>");
+                            }
+                            </script>
                             <?php
                             }
                             ?>
@@ -110,9 +119,21 @@
                     </div>
                 </div>
             </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <p>
+                            Oleh:<br/>
+                            170535629571 - AHMAD ZAINUR ROZIQI | 160535611819 - SABRI SANGJAYA | 160535611801 - SHADA INTISHAR NABILLAH<br/>S1 TEKNIK INFORMATIKA 2016 Offering B<br/>
+                            &copy;2018
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
         </div>
-        
-        
-        
     </body>
 </html>
